@@ -1,3 +1,4 @@
+const { getAuth } = require("@clerk/express");
 
 const log = require("../middleware/asyncWrapper");
 const Prodect = require("../models/product.model")

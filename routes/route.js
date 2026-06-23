@@ -1,17 +1,16 @@
 const express = require("express");
-const {main,posts, single, del, add} = require("../controllers/shop.controller");
+const { main, posts, single, del, add } = require("../controllers/shop.controller");
 const logss = require("../middleware/asyncWrapper");
+const isAuth = require("../middleware/isAuth");
 
 
 const router = express.Router()
 router.route("/")
-    .get(logss,main)
-    .post(posts)
+    .get(isAuth, main)
+    .post(isAuth,posts)
 router.route("/:userId")
-    .get(single)
+    .get(isAuth,single)
 router.route("/:userId/:ProdectID")
-    .delete(del)
-    .patch(add)
-
-
+    .delete(isAuth,del)
+    .patch(isAuth,add)
 module.exports = router;
