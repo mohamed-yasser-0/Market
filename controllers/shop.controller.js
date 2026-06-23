@@ -21,7 +21,9 @@ const del = async (req, res) => {
     const productID = req.params.ProdectID
 
     const del = await Prodect.findById(productID)
-
+    if (!del) {
+        res.send("product not found")
+    }
     if (del.userId.toString() === id.toString()) {
         await del.deleteOne();
     } else (
