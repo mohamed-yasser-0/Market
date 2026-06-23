@@ -1,7 +1,8 @@
 
+const log = require("../middleware/asyncWrapper");
 const Prodect = require("../models/product.model")
 
-const main = async (req, res) => {
+const main = async (req, res, next) => {
     const products = await Prodect.find();
     res.send(products)
 }
