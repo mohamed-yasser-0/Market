@@ -28,14 +28,11 @@ const toggleLike = async (req, res) => {
     });
 }
 const getLikes = async (req, res) => {
-    const productId = req.params.productId;
+    const existingLike = await Liks.find();
 
-    const existingLike = await Liks.find({
-        productId,
-    });
     return res.json({
-        existingLike: existingLike
+        existingLike,
     });
-}
+};
 
 module.exports = { toggleLike, getLikes };
