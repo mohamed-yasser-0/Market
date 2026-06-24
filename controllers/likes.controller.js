@@ -27,5 +27,15 @@ const toggleLike = async (req, res) => {
         liked: true,
     });
 }
+const getLikes = async (req, res) => {
+    const productId = req.params.productId;
 
-module.exports = { toggleLike };
+    const existingLike = await Liks.find({
+        productId,
+    });
+    return res.json({
+        existingLike: existingLike
+    });
+}
+
+module.exports = { toggleLike, getLikes };
