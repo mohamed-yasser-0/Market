@@ -2,12 +2,12 @@ const Liks = require("../models/likes.model");
 const { getAuth } = require("@clerk/express");
 
 const toggleLike = async (req, res) => {
-    const ProductID = req.params.ProductID;
+    const productId = req.params.productId;
     const { userId } = getAuth(req);
 
     const existingLike = await Liks.findOne({
         userId,
-        ProductID,
+        productId,
     });
     if (existingLike) {
         await Liks.deleteOne({ _id: existingLike._id });
@@ -19,7 +19,7 @@ const toggleLike = async (req, res) => {
     }
     await Liks.create({
         userId,
-        ProductID,
+        productId,
     });
 
     return res.json({

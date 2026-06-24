@@ -8,7 +8,7 @@ const liksSchema = new mongoose.Schema(
         },
         productId:{
             type: String,
-            require: true
+            required: true
         }
     },
     {
